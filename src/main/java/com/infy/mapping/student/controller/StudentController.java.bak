@@ -17,25 +17,18 @@ public class StudentController {
 	private static final Logger logger = Logger.getLogger(StudentController.class);
 	@Autowired
 	private StudentRepository studentRepository;
-/*
-*Created student details to DB
-*/
+
 	@PostMapping(value = "/createStudent")
 	public StudentBean createStudentData(@RequestBody StudentBean student) {
 		logger.info("createStudentData method entered...." + logger.getClass());
 		return studentRepository.save(student);
 	}
-/*
-*Retrieve student details from DB
-*/
 	@GetMapping(value = "/getStudentDetails")
 	public Iterable<StudentBean> getStudentDetails(@RequestBody StudentBean student) {
 		logger.info("getStudentDetails method entered...." + logger.getClass());
 		return studentRepository.findAll();
 	}
-/*
-*Retrieve student details from DB by studentName
-*/	
+	
 	
 	@GetMapping(value = "/getStudentDetails")
 	public Iterable<StudentBean> getStudentByName(@RequestParam("name") String name) {
